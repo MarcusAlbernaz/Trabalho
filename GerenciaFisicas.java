@@ -54,60 +54,64 @@ public class GerenciaFisicas {
 		fisicas.add(fisica);
 
 		System.out.println("Cadastro efetuado com sucesso.");
-
+		System.out.println("-----------------------------");
 	}
 
 	public void Alteracao() {
-		System.out.println("--=[Alterar Pessoa Física]=--");
+		    System.out.println("--=[Alterar Pessoa Física]=--");
 
-		if (fisicas.isEmpty())
-			System.out.println("Não existem pessoas físicas cadastradas.");
-		else {
-			int resp, pos;
-			String dataNascimentoStr;
+		    if (fisicas.isEmpty())
+		        System.out.println("Não existem pessoas físicas cadastradas.");
+		    else {
+		        int resp, pos;
 
-			System.out.println("Qual a posição que deseja alterar?");
-			pos = lerN.nextInt();
+		        System.out.println("Qual a posição que deseja alterar?");
+		        pos = lerN.nextInt();
 
-			if ((pos >= 0) && (pos < fisicas.size())) {
-				System.out.println("-[Dados da Pessoa Física]-");
-				imprime(fisicas.get(pos));
-				System.out.println("---------------");
+		        if ((pos >= 0) && (pos < fisicas.size())) {
+		            System.out.println("-[Dados da Pessoa Física]-");
+		            imprime(fisicas.get(pos));
+		            System.out.println("---------------");
 
-				System.out.println("Deseja realmente alterar os dados acima?(1-sim/2-não)");
-				resp = lerN.nextInt();
+		            System.out.println("Deseja realmente alterar os dados acima?(1-sim/2-não)");
+		            resp = lerN.nextInt();
 
-				if (resp == 1) {
-					System.out.println("Digite os novos dados para: ");
-					Fisica fisica = fisicas.get(pos);
+		            if (resp == 1) {
+		                System.out.println("Digite os novos dados para: ");
+		                Fisica fisica = fisicas.get(pos);
 
-					System.out.println("- Nome");
-					fisica.setNome(lerS.nextLine());
+		                System.out.println("- Nome");
+		                fisica.setNome(lerS.nextLine());
 
-					System.out.println("- Endereço");
-					fisica.setEndereco(lerS.nextLine());
+		                System.out.println("- Endereço");
+		                fisica.setEndereco(lerS.nextLine());
 
-					System.out.println("- Telefone");
-					fisica.setTelefone(lerS.nextLine());
+		                System.out.println("- Telefone");
+		                fisica.setTelefone(lerS.nextLine());
 
-					System.out.println("- CPF");
-					fisica.setCpf(lerS.nextLine());
+		                System.out.println("- CPF");
+		                fisica.setCpf(lerS.nextLine());
 
-					System.out.println("- Data de Nascimento no formato (ano-mês-dia)");
-					dataNascimentoStr = lerS.nextLine();
+		                System.out.println("- Data de Nascimento no formato (dd-MM-yyyy)");
+		                String dataNascimentoStr = lerS.nextLine();
+		                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Formato "dd-MM-yyyy"
 
-					fisica.setDataNascimento(LocalDate.parse(dataNascimentoStr));
+		                try {
+		                    LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, dateFormatter);
+		                    fisica.setDataNascimento(dataNascimento);
+		                    System.out.println("Dados alterados com sucesso.");
+		                    System.out.println("----------------------------------");
+		                } catch (DateTimeParseException e) {
+		                    System.out.println("Formato de data inválido. Certifique-se de que está no formato correto (dd-MM-yyyy).");
+		                }
 
-					System.out.println("Dados alterados com sucesso.");
+		            } else
+		                System.out.println("Operação cancelada pelo usuário.");
 
-				} else
-					System.out.println("Operação cancelada pelo usuário.");
-
-			} else
-				System.out.println("Digite uma posição válida.");
-
+		        } else
+		            System.out.println("Digite uma posição válida.");
+		    }
 		}
-	}
 
 	public void Exclusao() {
 
@@ -132,7 +136,7 @@ public class GerenciaFisicas {
 					fisicas.remove(pos);
 
 					System.out.println("Pessoa Física excluída com sucesso.");
-
+					System.out.println("-----------------------------");
 				} else
 					System.out.println("Operação cancelada pelo usuário.");
 			} else

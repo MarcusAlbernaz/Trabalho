@@ -37,7 +37,7 @@ public class GerenciaJuridica {
 		juridicas.add(juridica);
 		
 		System.out.println("Cadastro efetuado com sucesso.");
-		
+		System.out.println("-----------------------------");
 	}
 	
 	public void Alteracao() {
@@ -77,7 +77,7 @@ public class GerenciaJuridica {
 				
 					
 					System.out.println("Dados alterados com sucesso.");
-					
+					System.out.println("-----------------------------");
 				}else
 					System.out.println("Operação cancelada pelo usuário.");
 				
@@ -110,7 +110,7 @@ public class GerenciaJuridica {
 					juridicas.remove(pos);
 				
 					System.out.println("Pessoa Jurídica excluída com sucesso.");
-					
+					System.out.println("-----------------------------");
 				}else
 					System.out.println("Operação cancelada pelo usuário.");
 			}else

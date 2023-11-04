@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Principal {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    	Scanner scanner = new Scanner(System.in);
         int escolha;
         ArrayList<Fisica> fisicas = new ArrayList<>();
         GerenciaFisicas gerFisicas = new GerenciaFisicas(fisicas);
@@ -20,8 +20,10 @@ public class Principal {
         ArrayList<Locacao> locacao = new ArrayList<>();
         Agenda agenda = new Agenda(locacao);
         GerenciaAgenda gerAgenda = new GerenciaAgenda(agenda);
-        Caixa caixa = new Caixa(locacao);
-        GerenciaCaixa gerCaixas = new GerenciaCaixa(caixa);
+
+        // Inicialize a lista de Caixa para usar na GerenciaCaixa
+        ArrayList<Caixa> caixa = new ArrayList<>();
+        GerenciaCaixa gerCaixas = new GerenciaCaixa(locacao, caixa);
 
         do {
             System.out.println("Escolha uma opção:");
@@ -37,6 +39,7 @@ public class Principal {
                 case 1:
                     int escolha_cliente;
                     do {
+                        System.out.println("Escolha uma opção:");
                         System.out.println("1- Gerenciar Pessoa Física");
                         System.out.println("2- Gerenciar Pessoa Jurídica");
                         System.out.println("3- Voltar ao menu principal");
@@ -44,6 +47,7 @@ public class Principal {
                         switch (escolha_cliente) {
                             case 1:
                                 int escolha_cliente2;
+                                System.out.println("Escolha uma opção:");
                                 System.out.println("1- Cadastrar Pessoa Física");
                                 System.out.println("2- Alterar Pessoa Física");
                                 System.out.println("3- Excluir Pessoa Física");
@@ -69,10 +73,12 @@ public class Principal {
                                         break;
                                     case 6:
                                         System.out.println("Retornando ao menu principal");
+                                        System.out.println("-----------------------------");
                                 }
                                 break;
                             case 2:
                                 int escolha_juridica;
+                                System.out.println("Escolha uma opção:");
                                 System.out.println("1- Cadastrar Pessoa Jurídica");
                                 System.out.println("2- Alterar Pessoa Jurídica");
                                 System.out.println("3- Excluir Pessoa Jurídica");
@@ -98,10 +104,12 @@ public class Principal {
                                         break;
                                     case 6:
                                         System.out.println("Retornando ao menu principal");
+                                        System.out.println("-----------------------------");
                                 }
                                 break;
                             case 3:
                                 System.out.println("Retornando ao menu principal");
+                                System.out.println("-----------------------------");
                                 break;
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -112,6 +120,7 @@ public class Principal {
                 case 2:
                     int escolha_veiculo;
                     do {
+                        System.out.println("Escolha uma opção:");
                         System.out.println("1- Gerenciar Carros");
                         System.out.println("2- Gerenciar Caminhões");
                         System.out.println("3- Voltar ao menu principal");
@@ -119,6 +128,7 @@ public class Principal {
                         switch (escolha_veiculo) {
                             case 1:
                                 int escolha_veiculo2;
+                                System.out.println("Escolha uma opção:");
                                 System.out.println("1- Cadastrar Carro");
                                 System.out.println("2- Alterar Carro");
                                 System.out.println("3- Excluir Carro");
@@ -144,10 +154,12 @@ public class Principal {
                                         break;
                                     case 6:
                                         System.out.println("Retornando ao menu principal");
+                                        System.out.println("-----------------------------");
                                 }
                                 break;
                             case 2:
                                 int escolha_caminhao;
+                                System.out.println("Escolha uma opção:");
                                 System.out.println("1- Cadastrar Caminhão");
                                 System.out.println("2- Alterar Caminhão");
                                 System.out.println("3- Excluir Caminhão");
@@ -173,6 +185,7 @@ public class Principal {
                                         break;
                                     case 6:
                                         System.out.println("Retornando ao menu principal");
+                                        System.out.println("-----------------------------");
                                 }
                                 break;
                             case 3:
@@ -187,7 +200,7 @@ public class Principal {
                 case 3:
                     int escolha_locacao;
                     do {
-                        System.out.println("[Gerenciar Locação]");
+                        System.out.println("--=[Gerenciar Locação]=--");
                         System.out.println("1- Agendar");
                         System.out.println("2- Alterar");
                         System.out.println("3- Cancelar");
@@ -217,6 +230,7 @@ public class Principal {
                                 break;
                             case 7:
                                 System.out.println("Retornando ao menu principal");
+                                System.out.println("-----------------------------");
                                 break;
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
@@ -225,8 +239,8 @@ public class Principal {
                     break;
 
                 case 4:
-                    int escolha_caixa;
-                    do {
+                	int escolha_caixa;
+                	do {
                         System.out.println("[Gerenciar Caixa]");
                         System.out.println("1- Pagamento Locação");
                         System.out.println("2- Total Arrecadado");
@@ -234,28 +248,29 @@ public class Principal {
                         System.out.println("4- Total a Receber");
                         System.out.println("5- Retornar ao menu anterior");
                         escolha_caixa = scanner.nextInt();
+                        
                         switch (escolha_caixa) {
                             case 1:
-                                gerCaixas.pagamentoLocacao();
+                                gerCaixas.pagamentoLocacao(locacao);
                                 break;
                             case 2:
                                 gerCaixas.totalArrecadado();
                                 break;
                             case 3:
-                                gerCaixas.totalArrecadadoPorPeriodo();
+                                gerCaixas.totalArrecadadoPorPeríodo();
                                 break;
                             case 4:
                                 gerCaixas.totalAReceber();
                                 break;
                             case 5:
                                 System.out.println("Retornando ao menu principal");
+                                System.out.println("-----------------------------");
                                 break;
                             default:
                                 System.out.println("Opção inválida. Tente novamente.");
                         }
                     } while (escolha_caixa != 5);
                     break;
-
                 case 5:
                     System.out.println("Saindo da aplicação.");
                     scanner.close();
@@ -265,6 +280,7 @@ public class Principal {
                     break;
             }
         } while (escolha != 5);
+        scanner.close();
         scanner.close();
     }
 }

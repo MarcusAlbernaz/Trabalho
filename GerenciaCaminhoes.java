@@ -42,7 +42,7 @@ public class GerenciaCaminhoes {
 		caminhoes.add(caminhao);
 		
 		System.out.println("Cadastro efetuado com sucesso.");
-		
+		System.out.println("----------------------------------");
 	}
 	
 	public void Alteracao() {
@@ -89,10 +89,8 @@ public class GerenciaCaminhoes {
 					System.out.println("- Quantidade de Eixos");
 					caminhao.setNumeroDeEixos(lerN.nextInt());
 					
-					caminhoes.add(caminhao);
-					
 					System.out.println("Dados alterados com sucesso.");
-					
+					System.out.println("----------------------------------");
 				}else
 					System.out.println("Operação cancelada pelo usuário.");
 				
@@ -125,11 +123,15 @@ public class GerenciaCaminhoes {
 						caminhoes.remove(pos);
 						
 						System.out.println("Caminhão excluído com sucesso.");
-					
-					}else
+						System.out.println("----------------------------------");
+					}else {
 						System.out.println("Operação cancelada pelo usuário. Caminhão NÃO excluído");
-				}else
+						System.out.println("----------------------------------");
+					}
+				}else {
 					System.out.println("Digite uma posição válida.");
+					System.out.println("----------------------------------");
+				}
 			}
 	}
 	

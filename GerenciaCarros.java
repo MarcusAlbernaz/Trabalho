@@ -42,7 +42,7 @@ public class GerenciaCarros {
 		carros.add(carro);
 		
 		System.out.println("Cadastro efetuado com sucesso.");
-		
+		System.out.println("----------------------------------");
 	}
 	
 	public void Alteracao() {
@@ -65,7 +65,7 @@ public class GerenciaCarros {
 				resp = lerN.nextInt();
 				
 				if(resp == 1) {
-					System.out.println("Digite os novos dados para: ");
+					System.out.println("Digite os novos dados para:");
 					Carro carro = carros.get(pos);
 					
 					System.out.println("- Marca");
@@ -90,7 +90,7 @@ public class GerenciaCarros {
 					carro.setQuantidadePortas(lerN.nextInt());
 					
 					System.out.println("Dados alterados com sucesso.");
-					
+					System.out.println("----------------------------------");
 				}else
 					System.out.println("Operação cancelada pelo usuário.");
 				
@@ -123,11 +123,15 @@ public class GerenciaCarros {
 					carros.remove(pos);
 				
 					System.out.println("Carro excluído com sucesso.");
-					
-				}else
+					System.out.println("----------------------------------");
+				}else {
 					System.out.println("Operação cancelada pelo usuário. Carro NÃO excluído");
-			}else
+					System.out.println("----------------------------------");
+				}
+			}else {
 				System.out.println("Digite uma posição válida.");
+				System.out.println("----------------------------------");
+			}
 			
 		}
 	}
